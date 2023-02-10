@@ -1,4 +1,4 @@
-from utils import get_data, get_filtered_data
+from utils import get_data, get_filtered_data, get_last_values, get_formatted_date
 
 
 def main():
@@ -7,6 +7,8 @@ def main():
                      '&expirationTimestamp=1676135257313&signature=bZxIV88waEDOWZE0D2A-RK2h8enuTz5k8WLsNdItxfE' \
                      '&downloadName=operations.json'
     FILTERES_EMPTY_FROM = True
+    COUNT_LAST_VALUES = 5
+
     data, info = get_data(OPERATIONS_URL)
     if not data:
         exit(info)
@@ -14,6 +16,8 @@ def main():
         print(info)
 
     data = get_filtered_data(data, FILTERES_EMPTY_FROM)
+    data = get_last_values(data, COUNT_LAST_VALUES)
+    data = get_formatted_date(data)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 import pytest
-from utils import get_data, get_filtered_data
+from utils import get_data, get_filtered_data, get_last_values
 
 
 def test_get_data(test_url):
@@ -12,3 +12,9 @@ def test_get_data(test_url):
 def test_get_filtered_data(test_data):
     assert len(get_filtered_data(test_data)) == 4
     assert len(get_filtered_data(test_data, filtred_empty_from=True)) == 2
+
+
+def test_get_last_values(test_data):
+    data = get_last_values(test_data, 4)
+    assert data[0]['date'] == '2019-08-26T10:50:58.294041'
+    assert len(data) == 4
