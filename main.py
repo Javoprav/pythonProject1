@@ -6,7 +6,7 @@ def main():
                      '=0771f0bb-b4cb-4a14-bc05-94cbd33fc70d&table=block&id=f11058ed-10ad-42ea-a13d-aad1945e5421' \
                      '&expirationTimestamp=1676135257313&signature=bZxIV88waEDOWZE0D2A-RK2h8enuTz5k8WLsNdItxfE' \
                      '&downloadName=operations.json'
-    FILTERES_EMPTY_FROM = True
+    FILTERS_EMPTY_FROM = True
     COUNT_LAST_VALUES = 5
 
     data, info = get_data(OPERATIONS_URL)
@@ -15,9 +15,10 @@ def main():
     else:
         print(info)
 
-    data = get_filtered_data(data, FILTERES_EMPTY_FROM)
+    data = get_filtered_data(data, FILTERS_EMPTY_FROM)
     data = get_last_values(data, COUNT_LAST_VALUES)
     data = get_formatted_date(data)
+    return data
 
 
 if __name__ == "__main__":

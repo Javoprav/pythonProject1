@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 from pprint import pprint
 
 
@@ -16,7 +17,7 @@ def get_data(url):
 
 
 def get_filtered_data(data, filtred_empty_from=False):
-    pprint(data[:5])
+    #pprint(data[:5])
     # print(len(data))
     data = [x for x in data if "state" in x and x['state'] == "EXECUTED"]
     if filtred_empty_from:
@@ -33,3 +34,6 @@ def get_last_values(data, count_last_values):
 
 def get_formatted_date(data):
     pprint(data[0])
+    for row in data:
+        data = datetime.strptime(row['date'], '%Y-%m-%dT%H:%M:%S.%f').strftime('%d.%m.%Y')
+        print(data)
