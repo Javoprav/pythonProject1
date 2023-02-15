@@ -1,0 +1,6 @@
+/.pytest_cache
+/.idea
+/lib
+/bin
+/venv
+pyvenv.cfg
